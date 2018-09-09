@@ -1,0 +1,282 @@
+#-------------------------------------------------------------------------------
+# Name:Experiment to  perform a benchmark analysis for a shell sort, using different increment sets
+   on the same list
+#
+# Purpose:Educational
+#
+# Author:      mmk  and emeka
+#
+# Created:     06/09/2018
+# Copyright:   (c) mmk 2018
+# Licence:     <gloriaconcepto>
+#-------------------------------------------------------------------------------
+                     SOLUTION
+
+AIM: To observe the effect of step increment(gap) on the overall shell sorting
+
+EXPERIMENT TOOL:python library call cProfile will be use for the analysis and python programming language.
+
+EXPERIMENT ASSUMPTIONS:
+1)List for all cases contain the same unsorted data and same length of list.
+
+2)Data to be analyse will be only positive integer data type.
+
+3)Time to append big data into the list is not consider in the analysis.
+
+4)That other background operation on the machine effect on time performance is neglegible.
+
+EXPERIMENT PROCEDURES:
+1)Create a code that will store in unsorted integer in a text file
+  
+  import random
+
+
+  def create_data():
+       '''This is used mainly to generated a database that will be used to performe
+       the experiment'''
+       #please use this function only once  just to create a database....
+       unsorted_list = [random.randint(0,200) for p in range(0, 1000000)]
+       with open('unsorteddata.txt', 'w') as file:
+          file.write('\n'.join(str(data) for data in unsorted_list))
+
+
+
+
+2)Uncomment that create_data() and load the data 
+     
+  def load_data():
+    ''' This function is load the unsorted data for experiment '''
+
+    print("Loading word list from file...")
+    f= open('unsorteddata.txt')
+    content=f.read()
+    f.close()
+    words=content.split()
+    return words
+
+
+3)Perform the shell sorting for all test cases.
+
+  
+     
+
+EXPERIMENT CASES:The following are the experiment cases:
+ 
+unsorted_list = [random.randint(0,200) for p in range(0, 1000000)]
+
+1)when increment is n//2 steps
+
+2)when increment is n//5 steps
+
+3))when increment is n//15 steps 
+
+4)when increment is n//21 steps 
+
+
+
+
+EXPERIMENT RESULTS:
+
+CASE 1: when increment is n//2 steps
+	 
+============================================================================================================================
+
+
+*** Remote Interpreter Reinitialized  ***
+>>> 
+Loading word list from file...
+         2000025 function calls in 18.547 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.072    0.072   18.547   18.547 <string>:1(<module>)
+        2    0.000    0.000    0.000    0.000 <string>:661(write)
+   999993   17.828    0.000   17.952    0.000 SearchingAndSortingG.py:119(gap_insertion_sort)# a  ncalls  of 999993
+        1    0.001    0.001   18.475   18.475 SearchingAndSortingG.py:133(main)
+        1    0.000    0.000    0.170    0.170 SearchingAndSortingG.py:33(load_data)
+        1    0.352    0.352   18.304   18.304 SearchingAndSortingG.py:44(shell_sort1) #the percall time is 18.304sec
+        1    0.000    0.000    0.000    0.000 _bootlocale.py:11(getpreferredencoding)
+        1    0.000    0.000    0.000    0.000 codecs.py:260(__init__)
+        1    0.000    0.000    0.036    0.036 cp1252.py:22(decode)
+        2    0.000    0.000    0.000    0.000 queue.py:121(put)
+        2    0.000    0.000    0.000    0.000 queue.py:212(_put)
+        2    0.000    0.000    0.000    0.000 threading.py:240(__enter__)
+        2    0.000    0.000    0.000    0.000 threading.py:243(__exit__)
+        2    0.000    0.000    0.000    0.000 threading.py:255(_is_owned)
+        2    0.000    0.000    0.000    0.000 threading.py:335(notify)
+        1    0.036    0.036    0.036    0.036 {built-in method _codecs.charmap_decode}
+        1    0.000    0.000    0.000    0.000 {built-in method _locale._getdefaultlocale}
+        1    0.000    0.000   18.547   18.547 {built-in method builtins.exec}
+   999994    0.124    0.000    0.124    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 {built-in method io.open}
+        2    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        1    0.000    0.000    0.000    0.000 {method 'close' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.042    0.042    0.078    0.078 {method 'read' of '_io.TextIOWrapper' objects}
+        1    0.091    0.091    0.091    0.091 {method 'split' of 'str' objects}
+
+
+>>> 
+=========================================================================================================================================================================
+CASE 2: when increment is n//5 steps
+========================================================================================================================================================================
+*** Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:06:47) [MSC v.1914 32 bit (Intel)] on win32. ***
+*** Remote Python engine  is active ***
+>>> 
+*** Remote Interpreter Reinitialized  ***
+>>> 
+Loading word list from file...
+         500037 function calls in 338.766 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.228    0.228  338.766  338.766 <string>:1(<module>)
+        2    0.000    0.000    0.000    0.000 <string>:661(write)
+   249998  336.783    0.001  337.008    0.001 SearchingAndSortingG.py:119(gap_insertion_sort)# a  ncalls  of  249998
+        1    0.005    0.005  338.538  338.538 SearchingAndSortingG.py:133(main)
+        1    0.001    0.001    0.822    0.822 SearchingAndSortingG.py:33(load_data)
+        1    0.702    0.702  337.710  337.710 SearchingAndSortingG.py:44(shell_sort1)#the percall time is 337.710sec
+        1    0.000    0.000    0.000    0.000 _bootlocale.py:11(getpreferredencoding)
+        1    0.000    0.000    0.000    0.000 codecs.py:260(__init__)
+        1    0.000    0.000    0.156    0.156 cp1252.py:22(decode)
+        2    0.000    0.000    0.000    0.000 queue.py:121(put)
+        2    0.000    0.000    0.000    0.000 queue.py:212(_put)
+        2    0.000    0.000    0.000    0.000 threading.py:240(__enter__)
+        2    0.000    0.000    0.000    0.000 threading.py:243(__exit__)
+        2    0.000    0.000    0.000    0.000 threading.py:255(_is_owned)
+        2    0.000    0.000    0.000    0.000 threading.py:335(notify)
+        1    0.155    0.155    0.155    0.155 {built-in method _codecs.charmap_decode}
+        1    0.000    0.000    0.000    0.000 {built-in method _locale._getdefaultlocale}
+        1    0.000    0.000  338.766  338.766 {built-in method builtins.exec}
+   249999    0.226    0.000    0.226    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.048    0.048    0.048    0.048 {built-in method io.open}
+        2    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        1    0.000    0.000    0.000    0.000 {method 'close' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.138    0.138    0.293    0.293 {method 'read' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {method 'remove' of 'collections.deque' objects}
+        1    0.479    0.479    0.479    0.479 {method 'split' of 'str' objects}
+
+
+>>> 
+========================================================================================================================================================================
+CASE 3:when increment is n//15 steps
+=========================================================================================================================================================================
+
+*** Remote Interpreter Reinitialized  ***
+>>> 
+Loading word list from file...
+         142893 function calls in 101.215 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.233    0.233  101.215  101.215 <string>:1(<module>)
+        2    0.000    0.000    0.000    0.000 <string>:661(write)
+    71426  100.210    0.001  100.247    0.001 SearchingAndSortingG.py:119(gap_insertion_sort)# a  ncalls  of  71426
+        1    0.004    0.004  100.982  100.982 SearchingAndSortingG.py:133(main)
+        1    0.000    0.000    0.613    0.613 SearchingAndSortingG.py:33(load_data)
+        1    0.118    0.118  100.364  100.364 SearchingAndSortingG.py:44(shell_sort1)#the percall time is 100.364sec
+        1    0.000    0.000    0.000    0.000 _bootlocale.py:11(getpreferredencoding)
+        1    0.000    0.000    0.000    0.000 codecs.py:260(__init__)
+        1    0.000    0.000    0.102    0.102 cp1252.py:22(decode)
+        2    0.000    0.000    0.000    0.000 queue.py:121(put)
+        2    0.000    0.000    0.000    0.000 queue.py:212(_put)
+        2    0.000    0.000    0.000    0.000 threading.py:240(__enter__)
+        2    0.000    0.000    0.000    0.000 threading.py:243(__exit__)
+        2    0.000    0.000    0.000    0.000 threading.py:255(_is_owned)
+        2    0.000    0.000    0.000    0.000 threading.py:335(notify)
+        1    0.101    0.101    0.101    0.101 {built-in method _codecs.charmap_decode}
+        1    0.000    0.000    0.000    0.000 {built-in method _locale._getdefaultlocale}
+        1    0.000    0.000  101.215  101.215 {built-in method builtins.exec}
+    71427    0.037    0.000    0.037    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.001    0.001    0.001    0.001 {built-in method io.open}
+        2    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        1    0.001    0.001    0.001    0.001 {method 'close' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.155    0.155    0.257    0.257 {method 'read' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {method 'remove' of 'collections.deque' objects}
+        1    0.353    0.353    0.353    0.353 {method 'split' of 'str' objects}
+
+
+>>> 
+
+======================================================================================================================================================================
+========================================================================================================================================================================
+CASE 3:when increment is n//21steps
+=========================================================================================================================================================================
+
+
+*** Remote Interpreter Reinitialized  ***
+>>> 
+Loading word list from file...
+         100037 function calls in 562.277 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.508    0.508  562.277  562.277 <string>:1(<module>)
+        2    0.000    0.000    0.000    0.000 <string>:661(write)
+    49998  559.974    0.011  560.059    0.011 SearchingAndSortingG.py:119(gap_insertion_sort)# a  ncalls  of  49998
+        1    0.003    0.003  561.768  561.768 SearchingAndSortingG.py:133(main)
+        1    0.001    0.001    0.765    0.765 SearchingAndSortingG.py:33(load_data)
+        1    0.941    0.941  561.000  561.000 SearchingAndSortingG.py:44(shell_sort1)#the percall time is 561.000sec
+        1    0.000    0.000    0.000    0.000 _bootlocale.py:11(getpreferredencoding)
+        1    0.000    0.000    0.000    0.000 codecs.py:260(__init__)
+        1    0.000    0.000    0.103    0.103 cp1252.py:22(decode)
+        2    0.000    0.000    0.000    0.000 queue.py:121(put)
+        2    0.000    0.000    0.000    0.000 queue.py:212(_put)
+        2    0.000    0.000    0.000    0.000 threading.py:240(__enter__)
+        2    0.000    0.000    0.000    0.000 threading.py:243(__exit__)
+        2    0.000    0.000    0.000    0.000 threading.py:255(_is_owned)
+        2    0.000    0.000    0.000    0.000 threading.py:335(notify)
+        1    0.102    0.102    0.102    0.102 {built-in method _codecs.charmap_decode}
+        1    0.000    0.000    0.000    0.000 {built-in method _locale._getdefaultlocale}
+        1    0.000    0.000  562.277  562.277 {built-in method builtins.exec}
+    49999    0.084    0.000    0.084    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.001    0.001    0.001    0.001 {built-in method io.open}
+        2    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        1    0.000    0.000    0.000    0.000 {method 'close' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.164    0.164    0.267    0.267 {method 'read' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {method 'remove' of 'collections.deque' objects}
+        1    0.495    0.495    0.495    0.495 {method 'split' of 'str' objects}
+
+
+>>> 
+
+
+
+
+EXPERIMENT CONCLUSION:
+========================================================================================================================================
+
+A increase in the insertion size (gap) tends to improve the sort performance.
+
+=========================================================================================================================================
+EXPERIMENT PRECAUTION:
+We ensured that all background process on the machine was shut down to ensure that the machine RAM is dedicated only to the operation at runtime.
+
+To ensure that we got the best performance each cases were ran for 20 times and the best average time was taken.
+ 
