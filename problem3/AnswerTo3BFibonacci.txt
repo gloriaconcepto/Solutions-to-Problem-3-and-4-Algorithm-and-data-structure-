@@ -1,0 +1,46 @@
+#===============================================================================
+#FIBONACCI RECURSIVE FUNCTION
+#===============================================================================
+def fibonacci_recursive(num):
+    '''Takes and integer and return it fibonacci sequence.it return
+        fibonacci sum(integer)'''
+
+        #a boolean to print the fibonacci sequence.
+
+    isprint_fibo_sequence=False
+
+         # declare a base case
+    if num==0 or num==1:
+
+        return 1
+
+    else:
+
+        #make the recursive call
+      return fibonacci_recursive(num-1) + fibonacci_recursive(num-2)
+
+
+#===============================================================================
+# AN ITERATIVE  METHOD TO ANALYSE FIBONACCI SEQUENCE
+#===============================================================================
+def iterative_fibonacci(num):
+    ''' This functions takes in an intege and return interge '''
+    #iterative method
+    index_1=1
+    index_2=1
+
+    for i in range(num-1):# big O(n) at worst case
+        index_1=index_2
+        index_2= index_1 + index_2
+
+    return index_1
+
+
+In terms of big-o notation  performance "iterative_fiboncci(num)" function is better than "fibonacci_recursive(num)" function
+
+iterative_fiboncci(num) has big-O of O(n) at worst case while
+
+fibonacci_recursive(num) has big-O of O(2^n)i.e expotential  at worst case 
+
+
+
