@@ -1,0 +1,46 @@
+Solutions to 4b
+How can you delete items from a hash table that uses chaining for collision
+resolution?
+=======================================================================
+1.Get the key of the item to be removed.
+2. Hash the key to locate the slot (in this case chaining) the linked list.
+3. Check if the item is in the list
+4. If none return if the item is there remove it from the list.
+
+How to detect for open address for collision resolution
+========================================================= 
+METHOD 1 Using Naïve method
+a. Set the key or the item to be remove.
+b. Hash the key to get its high value.
+c. Locate it position on slot
+e. Remove the item in that slot list (making it null)
+METHOD2:
+Replacing the remove item with a dummy value.
+
+But this raises issues of waste storage space and reduce efficiencies.
+
+What are the special circumstances that must be handled?
+=========================================================
+Answer:
+Let assume we collision at
+Slot 1
+i.e H(K1) = H(K2) = H(K3) = 1
+All have the same hash value, we are using Naïve delete method.
+----------------------------------------------------------
+Null |	K1V1 |	K2V2 |	K3V2 | NULL |	NULL |	NULL	
+----------------------------------------------------------
+
+We then delete the value of using the naïve method which is replacing it with a null value
+	---------------------------------------------------------- 
+         K1V |	NULL |	K1V2 |	NULL |	NULL |	NULL |	NULL
+	----------------------------------------------------------		
+                Delete
+
+We then want to get the value of K3, which have the same hash value as of K2 and it comes after K2 (using linear Probing method) due to the null value we inserted. 
+The last table would assume that K3 does not exist because the value in the bucket at index 2 is null.
+Solution
+Replace the delete value with a place holder identifier variable.
+(Problem arises) We have a lot of place holder identifier variables, which increase the load factor. This can be reduce when the table is resized.
+
+
+
