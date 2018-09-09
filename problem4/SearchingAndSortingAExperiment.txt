@@ -1,0 +1,185 @@
+#-------------------------------------------------------------------------------
+# Name: Set up a random experiment to test the difference between a sequential
+#         search and a binary search on a list of integers.
+#
+# Purpose:Educational
+#
+# Author:      mmk  and emeka
+#
+# Created:     06/09/2018
+# Copyright:   (c) mmk 2018
+# Licence:     <gloriaconcepto>
+#-------------------------------------------------------------------------------
+                     SOLUTION
+
+AIM: The experiment is to test the difference between sequential search and a binary search.
+
+EXPERIMENT TOOL:python library call cProfile will be use for the analysis and python programming language.
+
+EXPERIMENT ASSUMPTIONS:
+1)Data to be analyse will be only positive integer data type.
+
+2)List is assumed to be sorted already.
+
+3)Time to append big data into the list is not consider in the analysis.
+
+4)That other background operation on the machine effect on time performance is neglegible.
+
+EXPERIMENT CASES:The following are the experiment cases:
+
+  data=[p for p in range(0, 100000000)]
+
+1)To find data at position data[0].
+
+2)To find data at position data[len(data)//2]
+
+3)To find data at position data[len(data)-1]
+
+EXPERIMENT RESULTS:
+
+CASE 1: Find the data at the first index data[0]
+============================================================================================================================
+
+
+*** Remote Interpreter Reinitialized  ***
+>>> 
+sequential search case 1  True
+binary search  case 1 True
+         102 function calls in 0.149 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.019    0.019    0.148    0.148 <string>:1(<module>)
+        8    0.000    0.000    0.000    0.000 <string>:661(write)
+        1    0.000    0.000    0.000    0.000 SearchingAndSortingA.py:18(ordered_sequential_search)# percall time for sequential search is 0.000sec
+        1    0.000    0.000    0.000    0.000 SearchingAndSortingA.py:34(binary_search_non_recursive)# percall time for binary search is 0.000sec
+        1    0.000    0.000    0.129    0.129 SearchingAndSortingA.py:57(main)
+        1    0.129    0.129    0.129    0.129 SearchingAndSortingA.py:60(<listcomp>)# percall time here is not consider in the experiment
+        8    0.000    0.000    0.000    0.000 queue.py:121(put)
+        8    0.000    0.000    0.000    0.000 queue.py:212(_put)
+        8    0.000    0.000    0.000    0.000 threading.py:240(__enter__)
+        8    0.000    0.000    0.000    0.000 threading.py:243(__exit__)
+        8    0.000    0.000    0.000    0.000 threading.py:255(_is_owned)
+        8    0.000    0.000    0.000    0.000 threading.py:335(notify)
+        1    0.000    0.000    0.149    0.149 {built-in method builtins.exec}
+        3    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        8    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {method 'remove' of 'collections.deque' objects}
+
+
+>>> 
+on looking for a item in huge  big data at the first index ,we observed that percall time for both sequential and binary search is the same 0.000sec. 
+=========================================================================================================================================================================
+CASE 2: Find the data at  index data[len(data)//2]
+*** Remote Interpreter Reinitialized  ***
+sequential search case 2  True
+binary search  case 2 True
+         500102 function calls in 0.415 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.018    0.018    0.415    0.415 <string>:1(<module>)
+        8    0.000    0.000    0.000    0.000 <string>:661(write)
+        1    0.214    0.214    0.261    0.261 SearchingAndSortingA.py:18(ordered_sequential_search)# percall time for sequential search is 0.261sec
+        1    0.000    0.000    0.000    0.000 SearchingAndSortingA.py:34(binary_search_non_recursive)# percall time for binary search is 0.000sec
+        1    0.000    0.000    0.397    0.397 SearchingAndSortingA.py:57(main)
+        1    0.136    0.136    0.136    0.136 SearchingAndSortingA.py:60(<listcomp>)# percall time here is not consider in the experiment
+        8    0.000    0.000    0.000    0.000 queue.py:121(put)
+        8    0.000    0.000    0.000    0.000 queue.py:212(_put)
+        8    0.000    0.000    0.000    0.000 threading.py:240(__enter__)
+        8    0.000    0.000    0.000    0.000 threading.py:243(__exit__)
+        8    0.000    0.000    0.000    0.000 threading.py:255(_is_owned)
+        8    0.000    0.000    0.000    0.000 threading.py:335(notify)
+        1    0.000    0.000    0.415    0.415 {built-in method builtins.exec}
+   500003    0.048    0.000    0.048    0.000 {built-in method builtins.len}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        8    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {method 'remove' of 'collections.deque' objects}
+
+
+>>> 
+on looking for a item in huge  big data at  index data[len(data)//2] ,we observed that percall time for sequential search is  0.261sec
+while  binary search is  0.000sec.From binary search theory the first stage begins at the middle of the list(hence this is the best case analysis for binary search)
+while sequential will have to go through first index still middle hence big-O(n/2)average case. 
+
+========================================================================================================================================================================
+CASE 3: Find the data at  index data[len(data)-1]
+>>> 
+sequential search case 3  True
+binary search  case 3 True
+         1000101 function calls in 0.674 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.018    0.018    0.674    0.674 <string>:1(<module>)
+        8    0.000    0.000    0.000    0.000 <string>:661(write)
+        1    0.435    0.435    0.530    0.530 SearchingAndSortingA.py:18(ordered_sequential_search)# percall time for sequential search is 0.530sec
+        1    0.000    0.000    0.000    0.000 SearchingAndSortingA.py:34(binary_search_non_recursive)# percall time for binary search is 0.000sec
+        1    0.000    0.000    0.655    0.655 SearchingAndSortingA.py:57(main)
+        1    0.125    0.125    0.125    0.125 SearchingAndSortingA.py:60(<listcomp>)# percall time here is not consider in the experiment
+        8    0.000    0.000    0.000    0.000 queue.py:121(put)
+        8    0.000    0.000    0.000    0.000 queue.py:212(_put)
+        8    0.000    0.000    0.000    0.000 threading.py:240(__enter__)
+        8    0.000    0.000    0.000    0.000 threading.py:243(__exit__)
+        8    0.000    0.000    0.000    0.000 threading.py:255(_is_owned)
+        8    0.000    0.000    0.000    0.000 threading.py:335(notify)
+        1    0.000    0.000    0.674    0.674 {built-in method builtins.exec}
+  1000002    0.095    0.000    0.095    0.000 {built-in method builtins.len}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        8    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {method 'remove' of 'collections.deque' objects}
+
+>>> 
+on looking for a item in huge  big data at  index data[len(data)-1] ,we observed that percall time for sequential search is 0.530sec
+while  binary search is  0.000sec
+======================================================================================================================================================================
+
+EXPERIMENT CONCLUSION:
+
+From the above results we have concluded the following:
+
+1)For list that contain big data binary search method should be use due to it's high speed performance
+
+2)For list that contains small data sequential search method should be use due to it's performance
+
+3)But for unsorted list of large data one have to use sequential since it will be expensive to sort first,before performing binary search.
+
+ code below is for sequentail search that accept both sorted and unsorted list:
+
+   def sequential_search(num_list,item):
+    #assert num >=0, "You must enter a negative number"
+
+    pos=0
+    is_still_searching=False
+    #condition for looping
+    while pos<len(num_list) and not is_still_searching:
+        if num_list[pos]==item:
+            is_still_searching=True
+        else:
+            pos=pos + 1
+
+    return is_still_searching
+
+======================================================================================================================================================================
+EXPERIMENT PRECAUTION:
+We ensured that all background process on the machine was shut down to ensure that the machine RAM is dedicated only to the operation at runtime.
+ 
